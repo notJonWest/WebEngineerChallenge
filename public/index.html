@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Waste Lookup</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./styles/style.css"/>
+</head>
+<body>
+    <header>
+        <h1>Toronto Waste Lookup</h1>
+    </header>
+    <main>
+        <div id="search">
+            <input type="text"/>
+            <button><i class="fas fa-search fa-flip-horizontal fa-lg"></i></button>
+        </div>
+        <div id="results">
+            <div id="delayMsg" class="hide">Loading <i class="fas fa-spinner fa-pulse"></i></div>
+            <div id="errorMsg" class="hide"></div>
+            <ul id="all" class="fa-ul"></ul>
+            <div id="favourites" class="hide">
+                <h2>Favourites</h3>
+                <ul class="fa-ul"></ul>
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+    <script src="./js/wasteLookup.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+body
+{
+    background-color: white;
+    margin: 0;
+}
+
+header
+{
+    text-align: center;
+    color: white;
+    font-family: sans-serif;
+    padding: 1em;
+    margin: 1em 0 0 0;
+    background-image: linear-gradient(to right, #1d5895, #23995c);
+}
+main
+{
+    padding: 1em;
+}
+
+.hide
+{
+    display: none;
+}
+
+#search
+{
+    width: 100%;
+    display: flex;
+}
+#search input[type="text"]
+{
+    flex-grow: 1;
+    font-size: 1.1em;
+    padding: 0.4em;
+}
+#search button
+{
+    color: white;
+    cursor: pointer;
+    border: solid 0 #23995c;
+    border-radius: 5px;
+    width: 3em;
+    height: 3em;
+    margin: 0 0 0 0.5em;
+    background-color: #23995c;
+}
+
+#delayMsg
+{
+    text-align: center;
+    margin: 1em;
+}
+#errorMsg
+{
+    margin: 1em;
+}
+#results
+{
+    font-family: arial;
+}
+#results .fa-ul
+{
+    margin: 1em;
+}
+#results .fa-ul .fa-li
+{
+    cursor: pointer;
+    color: grey;
+}
+#results .fa-ul .favourite .fa-li
+{
+    color: #23995c;
+}
+#results .entry
+{
+    display: flex;
+    flex-wrap: nowrap;
+}
+#results .entry .title
+{
+    width: 50%;
+    display: inline-block;
+}
+#results .entry .title span
+{
+    cursor: pointer;
+}
+#results .entry .description
+{
+    width: 50%;
+    display: inline-block;
+    padding-inline-start: 2em;
+}
+.entry .description ul
+{
+    margin: 0;
+    padding-inline-start: 0;
+}
+#results .entry
+{
+    margin: 1em;
+}
+
+#favourites h2
+{
+    color: #23995c;
+}
