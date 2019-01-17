@@ -14,7 +14,7 @@ let search = e =>
     }
 
     if (!cancel)
-        if (e.type === "keypress")
+        if (e.type === "keyup")
             if (e.keyCode !== 13)
                 cancel = true;
 
@@ -140,5 +140,5 @@ let toggleFavourite = e =>
 };
 
 $$("#search button").addEventListener("click", search);
-$$("#search input[type='text']").addEventListener("keypress", search);
+$$("#search input[type='text']").addEventListener("keyup", search);
 $$("#results").addEventListener("click", toggleFavourite);
