@@ -17,7 +17,7 @@ let search = (e) =>
         $$("#results #favourites ul").innerHTML = "";
         $$("#results #favourites").classList.add("hide");
         $$("#delayMsg").classList.remove("hide");
-        fetch(`./json/waste_wizard`)
+        fetch(`https://secure.toronto.ca/cc_sr_v1/data/swm_waste_wizard_APR?limit=1000`)
         .then(data => data.json())
         .then(data =>
         {

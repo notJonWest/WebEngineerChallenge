@@ -2,14 +2,12 @@ const http = require("http");
 const url = require("url");
 const path = require("path");
 const fs = require("fs");
-const qs = require("querystring");
 
 const PORT = 8080;
 
 const DEFAULT_FILE = "index.html";
 const ROOTDIR = "./public";
 const ERRDIR = "./private/errorpages";
-const DATADIR = "./private/data";
 
 const extToMIME = {
 	".css": "text/css",
@@ -96,21 +94,12 @@ http.createServer((req, res) =>
 	};
     
     if (filePath.ext === '')
-    {
-		if (filePath.dir.substring(1, 5) === "json")
-			newUrlPath(DATADIR, filePath.base + ".json");
-		else
-        	newUrlPath(ROOTDIR, filePath.dir, filePath.base, DEFAULT_FILE);
-	}
+		newUrlPath(ROOTDIR, filePath.dir, filePath.base, DEFAULT_FILE);
 	
 	if (extToMIME[filePath.ext] === undefined)
-	{
 		finishResponse(404);
-	}
 	else
-	{
 		readFile();
-	}
 }).listen(PORT);
 
 let sendResponse = (res, sCode, cont, cType) =>
