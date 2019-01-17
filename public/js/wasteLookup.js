@@ -13,9 +13,7 @@ let search = (e) =>
                 cancel = true;
     if (!cancel)
     {
-        $$("#results #all").innerHTML = "";
-        $$("#results #favourites ul").innerHTML = "";
-        $$("#results #favourites").classList.add("hide");
+        clearResults();
         $$("#delayMsg").classList.remove("hide");
         fetch(`https://secure.toronto.ca/cc_sr_v1/data/swm_waste_wizard_APR?limit=1000`)
         .then(data => data.json())
@@ -68,6 +66,13 @@ let search = (e) =>
         });
     }
 };
+
+let clearResults = () =>
+{
+    $$("#results #all").innerHTML = "";
+    $$("#results #favourites ul").innerHTML = "";
+    $$("#results #favourites").classList.add("hide");
+}
 
 let addFavourite = title =>
 {
@@ -128,4 +133,5 @@ let toggleFavourite = e =>
 
 $$("#search button").addEventListener("click", search);
 $$("#search input[type='text']").addEventListener("keypress", search);
+$$("#search input[type='text']").addEventListener("change", clearResults);
 $$("#results").addEventListener("click", toggleFavourite);
