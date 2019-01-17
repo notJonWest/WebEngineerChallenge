@@ -6,7 +6,6 @@ let search = e =>
     let query = $$("#search input[type='text']").value.trim().toLowerCase();
     let cancel = false;
 
-    console.log(query);
     if (query.length === 0)
     {
         clearResults();
