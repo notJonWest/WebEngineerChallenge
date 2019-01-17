@@ -6,6 +6,7 @@ let search = e =>
     let query = $$("#search input[type='text']").value.trim().toLowerCase();
     let cancel = false;
 
+    console.log(query);
     if (query.length === 0)
     {
         clearResults();
@@ -16,17 +17,16 @@ let search = e =>
         if (e.type === "keypress")
             if (e.keyCode !== 13)
                 cancel = true;
-                
+
     if (!cancel)
     {
-        let favourites = getFavourites();
-
         clearResults();
         $$("#delayMsg").classList.remove("hide");
         fetch(`https://secure.toronto.ca/cc_sr_v1/data/swm_waste_wizard_APR?limit=1000`)
         .then(data => data.json())
         .then(data =>
         {
+            let favourites = getFavourites();
             for (let entry of data)
             {
                 let isFavourite = favourites.includes(entry.title);
@@ -75,7 +75,7 @@ let search = e =>
     }
 };
 
-let clearResults = e =>
+let clearResults = () =>
 {
     $$("#results #all").innerHTML = "";
     $$("#results #favourites ul").innerHTML = "";
