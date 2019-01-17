@@ -3,7 +3,6 @@ let $$All = selector => document.querySelectorAll(selector);
 
 let search = e =>
 {
-    let favourites = getFavourites();
     let query = $$("#search input[type='text']").value.trim().toLowerCase();
     let cancel = false;
 
@@ -11,8 +10,16 @@ let search = e =>
         if (e.type === "keypress")
             if (e.keyCode !== 13)
                 cancel = true;
+
+    if (query.length === 0)
+    {
+        clearResults();
+        cancel = true;
+    }
     if (!cancel)
     {
+        let favourites = getFavourites();
+
         clearResults();
         $$("#delayMsg").classList.remove("hide");
         fetch(`https://secure.toronto.ca/cc_sr_v1/data/swm_waste_wizard_APR?limit=1000`)
@@ -69,12 +76,9 @@ let search = e =>
 
 let clearResults = e =>
 {
-    if (e === undefined || e.target.value.length === 0)
-    {
-        $$("#results #all").innerHTML = "";
-        $$("#results #favourites ul").innerHTML = "";
-        $$("#results #favourites").classList.add("hide");
-    }
+    $$("#results #all").innerHTML = "";
+    $$("#results #favourites ul").innerHTML = "";
+    $$("#results #favourites").classList.add("hide");
 }
 
 let addFavourite = title =>
@@ -136,5 +140,4 @@ let toggleFavourite = e =>
 
 $$("#search button").addEventListener("click", search);
 $$("#search input[type='text']").addEventListener("keypress", search);
-$$("#search input[type='text']").addEventListener("keyup", clearResults);
 $$("#results").addEventListener("click", toggleFavourite);
