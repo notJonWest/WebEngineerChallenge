@@ -6,16 +6,17 @@ let search = e =>
     let query = $$("#search input[type='text']").value.trim().toLowerCase();
     let cancel = false;
 
-    if (!cancel)
-        if (e.type === "keypress")
-            if (e.keyCode !== 13)
-                cancel = true;
-
     if (query.length === 0)
     {
         clearResults();
         cancel = true;
     }
+
+    if (!cancel)
+        if (e.type === "keypress")
+            if (e.keyCode !== 13)
+                cancel = true;
+                
     if (!cancel)
     {
         let favourites = getFavourites();
